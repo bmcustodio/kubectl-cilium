@@ -9,7 +9,13 @@ A `kubectl` plugin for interacting with [Cilium](https://cilium.io).
 
 ## Installation
 
-At the moment, `kubectl-cilium` must be installed by running
+`kubectl-cilium` can be installed using [Krew](https://github.com/kubernetes-sigs/krew):
+
+```shell
+$ kubectl krew install cilium
+```
+
+Alternatively, `kubectl-cilium` can be installed by running
 
 ```shell
 $ go get github.com/bmcstdio/kubectl-cilium/cmd/kubectl-cilium
