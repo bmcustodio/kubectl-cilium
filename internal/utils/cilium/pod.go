@@ -19,11 +19,14 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
+
+	"github.com/bmcstdio/kubectl-cilium/internal/constants"
 )
 
 func DiscoverCiliumPodInNode(kubeClient kubernetes.Interface, ciliumNamespace, nodeName string) (string, error) {
 	p, err := kubeClient.CoreV1().Pods(ciliumNamespace).List(metav1.ListOptions{
 		FieldSelector: fmt.Sprintf("spec.nodeName==%s", nodeName),
+		LabelSelector: constants.CiliumLabelSelector,
 		Limit:         1,
 	})
 	if err != nil {
