@@ -2,10 +2,10 @@
 
 A `kubectl` plugin for interacting with [Cilium](https://cilium.io).
 
-![Release](https://img.shields.io/github/v/release/bmcstdio/kubectl-cilium)
-![Downloads](https://img.shields.io/github/downloads/bmcstdio/kubectl-cilium/total?color=green)
-[![Build](https://img.shields.io/travis/com/bmcstdio/kubectl-cilium)](https://travis-ci.com/bmcstdio/kubectl-cilium)
-![License](https://img.shields.io/github/license/bmcstdio/kubectl-cilium)
+![Release](https://img.shields.io/github/v/release/bmcustodio/kubectl-cilium)
+![Downloads](https://img.shields.io/github/downloads/bmcustodio/kubectl-cilium/total?color=green)
+[![Build](https://img.shields.io/travis/com/bmcustodio/kubectl-cilium)](https://travis-ci.com/bmcustodio/kubectl-cilium)
+![License](https://img.shields.io/github/license/bmcustodio/kubectl-cilium)
 
 ## Installation
 
@@ -18,7 +18,7 @@ $ kubectl krew install cilium
 Alternatively, `kubectl-cilium` can be installed by running
 
 ```shell
-$ go get github.com/bmcstdio/kubectl-cilium/cmd/kubectl-cilium
+$ go get github.com/bmcustodio/kubectl-cilium/cmd/kubectl-cilium
 ```
 
 or by cloning this repository, running
@@ -97,7 +97,7 @@ root@kind-cilium-mesh-2-control-plane:~#
 
 ## License
 
-Copyright 2020 bmcstdio
+Copyright 2020 bmcustodio
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

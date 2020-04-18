@@ -1,4 +1,4 @@
-module github.com/bmcstdio/kubectl-cilium
+module github.com/bmcustodio/kubectl-cilium
 
 go 1.13
 

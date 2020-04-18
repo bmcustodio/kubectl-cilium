@@ -1,4 +1,4 @@
-// Copyright 2020 bmcstdio
+// Copyright 2020 bmcustodio
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,9 +20,9 @@ import (
 	"github.com/spf13/cobra"
 	"k8s.io/client-go/tools/cache"
 
-	"github.com/bmcstdio/kubectl-cilium/internal/constants"
-	ciliumutils "github.com/bmcstdio/kubectl-cilium/internal/utils/cilium"
-	nodeutils "github.com/bmcstdio/kubectl-cilium/internal/utils/kubernetes"
+	"github.com/bmcustodio/kubectl-cilium/internal/constants"
+	ciliumutils "github.com/bmcustodio/kubectl-cilium/internal/utils/cilium"
+	nodeutils "github.com/bmcustodio/kubectl-cilium/internal/utils/kubernetes"
 )
 
 func init() {
