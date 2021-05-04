@@ -17,4 +17,4 @@ $(ROOT)/bin/golangci-lint:
 
 .PHONY: lint
 lint: $(ROOT)/bin/golangci-lint
-	@$(ROOT)/bin/golangci-lint run --enable-all --disable exhaustivestruct,errorlint,gochecknoglobals,gochecknoinits,goerr113,gomnd,lll,nlreturn,wrapcheck,wsl --timeout 5m
+	@$(ROOT)/bin/golangci-lint run --enable-all --disable exhaustivestruct,errorlint,gochecknoglobals,gochecknoinits,goerr113,gomnd,gomoddirectives,lll,nlreturn,wrapcheck,wsl --timeout 5m
