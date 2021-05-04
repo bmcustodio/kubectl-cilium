@@ -13,8 +13,8 @@ build:
 ci: lint build
 
 $(ROOT)/bin/golangci-lint:
-	@curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.24.0
+	@curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.39.0
 
 .PHONY: lint
 lint: $(ROOT)/bin/golangci-lint
-	@$(ROOT)/bin/golangci-lint run --enable-all --disable gochecknoglobals,gochecknoinits,gomnd,lll,wsl --timeout 5m
+	@$(ROOT)/bin/golangci-lint run --enable-all --disable exhaustivestruct,errorlint,gochecknoglobals,gochecknoinits,goerr113,gomnd,lll,nlreturn,wrapcheck,wsl --timeout 5m

@@ -17,11 +17,10 @@ package cilium
 import (
 	"fmt"
 
+	"github.com/bmcustodio/kubectl-cilium/internal/constants"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
-
-	"github.com/bmcustodio/kubectl-cilium/internal/constants"
 )
 
 func DiscoverCiliumNamespace(kubeClient kubernetes.Interface) (string, error) {

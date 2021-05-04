@@ -17,13 +17,12 @@ package cmd
 import (
 	"os"
 
+	"github.com/bmcustodio/kubectl-cilium/internal/version"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
-
-	"github.com/bmcustodio/kubectl-cilium/internal/version"
 )
 
 func init() {
@@ -46,9 +45,7 @@ var rootCmd = &cobra.Command{
 	SilenceUsage: true,
 	Short:        "A kubectl plugin for interacting with Cilium.",
 	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
-		var (
-			err error
-		)
+		var err error
 		kubeConfig, err = configFlags.ToRESTConfig()
 		if err != nil {
 			return err

@@ -23,14 +23,15 @@ import (
 	"k8s.io/client-go/tools/remotecommand"
 )
 
-func Exec(client kubernetes.Interface, config *restclient.Config, streams genericclioptions.IOStreams, podNamespace, podName string, stdin bool, tty bool, command ...string) error {
+func Exec(client kubernetes.Interface, config *restclient.Config, streams genericclioptions.IOStreams, podNamespace, podName, containerName string, stdin bool, tty bool, command ...string) error {
 	req := client.CoreV1().RESTClient().Post().Resource("pods").Namespace(podNamespace).Name(podName).SubResource("exec")
 	opt := &v1.PodExecOptions{
-		Command: command,
-		Stdin:   stdin,
-		Stdout:  true,
-		Stderr:  true,
-		TTY:     tty,
+		Command:   command,
+		Container: containerName,
+		Stdin:     stdin,
+		Stdout:    true,
+		Stderr:    true,
+		TTY:       tty,
 	}
 	req.VersionedParams(
 		opt,

@@ -15,6 +15,7 @@
 package constants
 
 const (
-	CiliumLabelSelector = "k8s-app=cilium"
-	DefaultCommand      = "/bin/bash"
+	CiliumAgentContainerName = "cilium-agent"
+	CiliumLabelSelector      = "k8s-app=cilium"
+	DefaultCommand           = "/bin/bash"
 )

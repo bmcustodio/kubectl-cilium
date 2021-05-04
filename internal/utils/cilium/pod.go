@@ -17,10 +17,9 @@ package cilium
 import (
 	"fmt"
 
+	"github.com/bmcustodio/kubectl-cilium/internal/constants"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
-
-	"github.com/bmcustodio/kubectl-cilium/internal/constants"
 )
 
 func DiscoverCiliumPodInNode(kubeClient kubernetes.Interface, ciliumNamespace, nodeName string) (string, error) {

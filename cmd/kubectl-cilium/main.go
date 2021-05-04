@@ -15,12 +15,11 @@
 package main
 
 import (
+	"github.com/bmcustodio/kubectl-cilium/internal/cmd"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/azure"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/oidc"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/openstack"
-
-	"github.com/bmcustodio/kubectl-cilium/internal/cmd"
 )
 
 func main() {

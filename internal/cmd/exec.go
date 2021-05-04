@@ -17,12 +17,11 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/spf13/cobra"
-	"k8s.io/client-go/tools/cache"
-
 	"github.com/bmcustodio/kubectl-cilium/internal/constants"
 	ciliumutils "github.com/bmcustodio/kubectl-cilium/internal/utils/cilium"
 	nodeutils "github.com/bmcustodio/kubectl-cilium/internal/utils/kubernetes"
+	"github.com/spf13/cobra"
+	"k8s.io/client-go/tools/cache"
 )
 
 func init() {
@@ -35,9 +34,7 @@ var execCmd = &cobra.Command{
 	Short:                 "Execute a command in a particular Cilium agent (default: '/bin/bash').",
 	Use:                   "exec (NODE|NAMESPACE/NAME) [COMMAND [args...]]",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		var (
-			command []string
-		)
+		var command []string
 		switch len(args) {
 		case 1:
 			command = []string{constants.DefaultCommand}
@@ -59,9 +56,7 @@ func exec(target string, command ...string) error {
 	if err != nil {
 		return fmt.Errorf("failed to parse %q as a target: %v", target, err)
 	}
-	var (
-		nn string
-	)
+	var nn string
 	switch {
 	case tns == "":
 		// Assume that 'target' is the name of a node.
@@ -87,5 +82,5 @@ func exec(target string, command ...string) error {
 	if err != nil {
 		return err
 	}
-	return nodeutils.Exec(kubeClient, kubeConfig, streams, ns, pn, true, true, command...)
+	return nodeutils.Exec(kubeClient, kubeConfig, streams, ns, pn, constants.CiliumAgentContainerName, true, true, command...)
 }

@@ -14,6 +14,4 @@
 
 package version
 
-var (
-	Version = "(UNKNOWN)"
-)
+var Version = "(UNKNOWN)"
