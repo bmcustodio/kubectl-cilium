@@ -25,29 +25,33 @@ import (
 )
 
 func init() {
+	execCmd.Flags().StringVarP(&labelSelector, "selector", "l", constants.CiliumLabelSelector, "Custom label selector to use when discovering Cilium pods")
 	rootCmd.AddCommand(execCmd)
 }
 
-var execCmd = &cobra.Command{
-	Args:                  cobra.MinimumNArgs(1),
-	DisableFlagsInUseLine: true,
-	Short:                 "Execute a command in a particular Cilium agent (default: '/bin/bash').",
-	Use:                   "exec (NODE|NAMESPACE/NAME) [COMMAND [args...]]",
-	RunE: func(cmd *cobra.Command, args []string) error {
-		var command []string
-		switch len(args) {
-		case 1:
-			command = []string{constants.DefaultCommand}
-		default:
-			command = args[1:]
-		}
-		return exec(args[0], command...)
-	},
-}
+var (
+	execCmd = &cobra.Command{
+		Args:                  cobra.MinimumNArgs(1),
+		DisableFlagsInUseLine: true,
+		Short:                 "Execute a command in a particular Cilium agent (default: '/bin/bash').",
+		Use:                   "exec (NODE|NAMESPACE/NAME) [COMMAND [args...]]",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			var command []string
+			switch len(args) {
+			case 1:
+				command = []string{constants.DefaultCommand}
+			default:
+				command = args[1:]
+			}
+			return exec(args[0], command...)
+		},
+	}
+	labelSelector string
+)
 
 func exec(target string, command ...string) error {
 	// Start by attempting to discover the namespace in which Cilium is installed.
-	ns, err := ciliumutils.DiscoverCiliumNamespace(kubeClient)
+	ns, err := ciliumutils.DiscoverCiliumNamespace(kubeClient, labelSelector)
 	if err != nil {
 		return err
 	}
@@ -78,7 +82,7 @@ func exec(target string, command ...string) error {
 		return fmt.Errorf("node with name %q does not exist", nn)
 	}
 	// Try to get the name of the Cilium pod running in the targeted node.
-	pn, err := ciliumutils.DiscoverCiliumPodInNode(kubeClient, ns, nn)
+	pn, err := ciliumutils.DiscoverCiliumPodInNode(kubeClient, ns, nn, labelSelector)
 	if err != nil {
 		return err
 	}
